@@ -1,19 +1,37 @@
+<!DOCTYPE html>
+<html>
+<style>
+  body{
+    background-color: #D6F696;
+  }
+</style>
+<body>
 <p id="notice"><%= notice %></p>
 
-<p>
+
   <strong>Name:</strong>
-  <%= @post.name %>
-</p>
+  <%= @post.name %><br />
 
-<p>
+
+
   <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+  <%= @post.title %><br />
 
-<p>
+
+
   <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+  <%= @post.content %><br />
+
+
+<h2><%= @post.comments.count %> Comments</h2>
+<%= render @post.comments %>
+
+<h2>Add a Comments:</h2>
+<%= render "comments/form" %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Back', posts_path %> |
+<%= link_to "Delete" , post_path(@post), method: :delete, data: {confirm: "are you sure"} %>
+
+</body>
+</html>
