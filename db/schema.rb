@@ -16,6 +16,10 @@ ActiveRecord::Schema.define(version: 20170104064418) do
   enable_extension "plpgsql"
 
 
+
+
+
+##
   create_table "comments", force: :cascade do |t|
     t.string   "name"
     t.text     "body"
