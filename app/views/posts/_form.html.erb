@@ -6,7 +6,8 @@
   }
 </style>
 <body>
-<%= form_for(post) do |f| %>
+<%= form_for @post, :html => {:class => "form-inline"} do |f| %>
+
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -18,18 +19,17 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :content %>
     <%= f.text_area :content %>
   </div>
