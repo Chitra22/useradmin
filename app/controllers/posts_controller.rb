@@ -8,11 +8,16 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
-     respond_to do |format|
-    format.html
-    format.json
-  end
+    # @posts = Post.all
+
+    # @posts = Post.order(:name).page params[:page]
+    @posts = Post.order("name").page(params[:page]).per(2)
+
+
+      respond_to do |format|
+       format.html # new.html.erb
+       format.js
+    end
     
   end
 

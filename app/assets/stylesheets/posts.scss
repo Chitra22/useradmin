@@ -9,7 +9,7 @@ div.container {
 header, footer {
     padding: 1em;
     color: white;
-    background-color: black;
+    background-color: cyan;
     clear: left;
     text-align: center;
 }
@@ -37,3 +37,7 @@ nav ul a {
     overflow: hidden;
 }
 
+pagination
+{
+    text-align: right;
+}
