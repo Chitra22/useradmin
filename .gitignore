@@ -16,4 +16,4 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-/db/migrate/schema.rb
+!/db/migrate/schema.rb
