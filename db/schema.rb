@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 20170104064418) do
 
 
 
-
-##
   create_table "comments", force: :cascade do |t|
     t.string   "name"
     t.text     "body"
