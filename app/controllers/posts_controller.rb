@@ -13,7 +13,6 @@ class PostsController < ApplicationController
     # @posts = Post.order(:name).page params[:page]
     @posts = Post.order("name").page(params[:page]).per(2)
 
-
       respond_to do |format|
        format.html # new.html.erb
        format.js

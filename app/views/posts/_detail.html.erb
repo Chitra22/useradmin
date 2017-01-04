@@ -8,15 +8,46 @@
     </tr>
   </thead>
  <tbody>
-    <% @posts.each do |post| %>
+    <% @posts.each do |post| id: 'new_post' %>
       <tr>
         <td><%= post.name %></td>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' , dismiss: 'alert' } %></td>
       </tr>
     <% end %>
   </tbody> 
   </table>
+  <script>
+$(document).ready(function(){
+$("#new_post").submit(function(){
+          // var returnValue = true;
+          var name = $("#register_name").val();
+          var mail = $("#register_email").val();
+          var password = $("#register_password").val();
+          var department= $("#register_department").val();
+
+
+          if(name =="" || mail == "" || password == "" || department == "")
+          {
+            alert ("please fill all details ")
+            return false
+          }
+          else
+          {
+            return true
+          }
+
+
+  //       rules: {
+  //   name: {
+  //     required: true,
+  //     maxlength: 4
+  //   }
+  // }
+});
+ 
+});
+</script>
