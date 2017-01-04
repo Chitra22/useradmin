@@ -7,6 +7,11 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore secrets and configurations
+db/schema.rb
+
+
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -16,6 +21,5 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-/db/schema.rb
 
 
