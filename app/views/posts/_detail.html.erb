@@ -1,9 +1,12 @@
-  <table class="table" bgcolor="cyan" border="1" cellpadding="50[" align="center">
+  <table class="table table-bordered table-inverse">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Title</th>
-      <th>Content</th>
+      <th scope="row">Name</th>
+      <th scope="row">Title</th>
+      <th scope="row">Content</th>
+      <th scope="row">E-mail</th>
+      <th scope="row">Created_by</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,7 +15,9 @@
       <tr>
         <td><%= post.name %></td>
         <td><%= post.title %></td>
+
         <td><%= post.content %></td>
+       <td><%= Comment.find_by(post_id: post.id).try(:body) %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' , dismiss: 'alert' } %></td>
@@ -20,4 +25,3 @@
     <% end %>
   </tbody> 
   </table>
- 

@@ -1,2 +1,2 @@
 alert ('senthi');
-$('#new_link').hide().after('<%= j render("form") %>');
+$("#new_link").html('<%= escape_javascript(render "form")%>' );

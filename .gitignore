@@ -8,7 +8,7 @@
 /.bundle
 
 # Ignore secrets and configurations
-db/schema.rb
+/db/schema.rb
 
 
 
