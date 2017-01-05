@@ -9,6 +9,7 @@
 <p id="notice"><%= notice %></p>
 
 
+  <h2><center>posts</center> </h2>
   <strong>Name:</strong>
   <%= @post.name %><br />
 
@@ -29,9 +30,12 @@
 <h2>Add a Comments:</h2>
 <%= render "comments/form" %>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %> |
-<%= link_to "Delete" , post_path(@post), method: :delete, data: {confirm: "are you sure"} %>
+<br/>
+
+
+<%= link_to '<button type="button">Edit</button>'.html_safe, edit_post_path(@post) %> |
+<%= link_to '<button type="button">Back</button>'.html_safe, posts_path %> |
+<%= link_to '<button type="button">Delete</button>'.html_safe, post_path(@post), method: :delete, data: {confirm: "are you sure"} %>
 
 </body>
 </html>
