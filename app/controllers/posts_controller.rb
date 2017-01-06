@@ -51,14 +51,13 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     # @post.created_by = current_user.email
-
+    @posts = Post.all
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
+        format.html
+        format.js
       else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.html
       end
     end
   end

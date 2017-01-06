@@ -1,6 +1,5 @@
 <h2>Log in</h2>
 
-<%= render "devise/shared/links" %>
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -33,10 +32,10 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
+   <%= render "devise/shared/links" %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
 

@@ -1,35 +1,26 @@
 
 <div class="container">
 <div class="row">
-<div class="col-md-4">
+  <div class="col-md-4">
 
-<table class="table table-bordered table-inverse">
-<thead>
-<tr>
-<th>NAME</th>
-</tr>
-</thead>
-<tbody>
-    <% @posts.each do |post| %>
-   <tr>
-   <th class="row"> 
-   <div id="detail_link">
-   <%= link_to post.name, post , remote: true %>
+    <table class="table table-bordered table-inverse">
+    <thead>
+    <tr>
+    <th>NAME</th>
+    </tr>
+    </thead>
+    <tbody>
+      <div id ="post_index">
+          <%= render '/posts/post_index', posts: @posts %>
       </div>
-      <br>
-</th>
-      </tr>
-
-     <% end %>
-     </tbody>
-</table>
-</div>
-</tbody>
-<div class="col-md-8">
- <div id = "detail_link">
-
+      <div id="post_index_new"></div>
+     </tbody> 
+    </table>
+  </div>
+ 
+ <div id="new_link">
+   
  </div> 
-</div>
 </div>
 </div>
 

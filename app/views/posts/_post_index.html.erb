@@ -1,0 +1,12 @@
+<% posts.each do |post| %>
+	<tr>
+		<th class="row"> 
+		 <div id="detail_link">
+		    <%= link_to post.name, post , remote: true %>
+		    <%#= post.name%>
+		  </div>
+		  <br>
+		</th>
+	</tr>
+
+<% end %>
