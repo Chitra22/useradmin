@@ -1,24 +1,5 @@
 
-<p id="notice"><%= notice %></p>
-
-<table class="table table-striped">
-<thead>
-<tr>
-  <th><strong>Name:</strong></th>
- <th> <strong>Title:</strong></th>
-  <th><strong>Content:</strong></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><%= @post.name %><br /></td>
-     <td><%= @post.content %><br /></td>
-    <td><%= @post.title %><br /></td>
-    </tr>
-    </tbody>
-    </table>
-
-
+<%= render 'post' %>
 
 <h2><%= @post.comments.count %> Comments</h2>
 <%= render @post.comments %>

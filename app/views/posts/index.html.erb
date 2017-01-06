@@ -13,7 +13,9 @@
     <% @posts.each do |post| %>
    <tr>
    <th class="row"> 
-   <%= link_to post.name, id: "detail_link", remote: true %>
+   <div id="detail_link">
+   <%= link_to post.name, post , remote: true %>
+      </div>
       <br>
 </th>
       </tr>
@@ -24,16 +26,15 @@
 </div>
 </tbody>
 <div class="col-md-8">
- <div id = "detail">
-   <%= render 'detail', post: @post %>
+ <div id = "detail_link">
+
  </div> 
 </div>
 </div>
 </div>
 
 <footer><center>
-<%= link_to 'New Post', new_post_path , id: "new_link"  %>
-  
+<%= link_to 'New Post', new_post_path , id: "new_link" , remote: true %>
 </center></footer>
 
 

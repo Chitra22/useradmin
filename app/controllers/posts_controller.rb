@@ -23,12 +23,19 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+         @posts= Post.all
+        respond_to do |format|
+        format.html
+       format.js
+    end
   end
 
   # GET /posts/new
   def new
     @post = Post.new
+
     @user = current_user.id
+    
     respond_to do |format|
       format.html
       format.js
@@ -89,6 +96,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name, :title, :content , :user_id)
+      params.require(:post).permit(:name, :title, :content ,:user_id)
     end
 end

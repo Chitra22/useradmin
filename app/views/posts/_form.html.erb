@@ -4,12 +4,12 @@
 <div class="col-md-4">
 <%= form_for @post  do |f| %>
 
-  <% if post.errors.any? %>
+   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-      <% post.errors.full_messages.each do |message| %>
+      <% @post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -29,6 +29,7 @@
     <%= f.label :content %>
     <%= f.text_area :content , class: "form-control", placeholder: "content" %>
   </div>
+  <%= f.hidden_field :user_id, value: @user%>
 <div class="btn btn-lg btn-success btn-block">
   <div class="actions">
     <%= f.submit %>
