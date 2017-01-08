@@ -44,6 +44,10 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # POST /posts

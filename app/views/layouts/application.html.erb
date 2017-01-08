@@ -49,10 +49,19 @@
       <% if current_user %>
     <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
-    <%= link_to "Login" , new_user_session_path %>
+    <%= link_to "Login"  %>
     <% end %>
     </button> </li>
-     
+    <li>
+     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">
+        <%= link_to "Index", posts_path %>
+      </button>
+      </li>   
+       <li>
+     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">
+        <%= link_to "New", new_post_path %>
+      </button>
+      </li> 
     </ul>
     </div>
     </div>
