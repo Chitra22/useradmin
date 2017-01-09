@@ -1,19 +1,22 @@
 
-<html>
-<style>
-  body{
-    background-color: #D6F696;
-  }
-</style>
-<body>
-<%= form_for @post, :html => {:class => "form-inline"} do |f| %>
 
-  <% if post.errors.any? %>
+
+ <div class="container">
+
+            <div id="messages" class="hide" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <div id="messages_content"></div>
+            </div>
+<div class="row">
+<div class="col-md-4">
+<%= form_for @post, remote: true  do |f| %>
+
+   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-      <% post.errors.full_messages.each do |message| %>
+      <% @post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -21,22 +24,52 @@
   <% end %>
   <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name , class: "form-control" , placeholder: "Name" %>
   </div>
 
   <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title , class: "form-control" , placeholder: "Title" %>
   </div>
 
   <div class="form-group">
     <%= f.label :content %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content , class: "form-control", placeholder: "content" %>
   </div>
+  <%= f.hidden_field :user_id, value: @user%>
 
+<div class="btn btn-lg btn-success btn-block">
   <div class="actions">
     <%= f.submit %>
+    </div>
+    </div>
+ </div>
   </div>
 <% end %>
-</body>
-</html>
+  <script>
+            // $('#new_post').submit(function(e) {
+            
+
+      $(document).ready(function(){
+$("#new_post").submit(function(){
+          // var returnValue = true;
+          var name = $("#post_name").val();
+          var title = $("#post_title").val();
+          var content = $("#post_content").val();
+          if(name =="" || title == "" || content == "")
+          {
+            alert ("please fill all details ")
+            return false
+          }
+          else
+          {
+    $('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
+                $('#messages_content').html('<h4>Your Post was Successfully updated</h4>');
+                $('#modal').modal('show');
+                e.preventDefault();
+                  }
+});
+ 
+});
+</script>
+        </script>  

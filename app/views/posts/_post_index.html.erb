@@ -1,0 +1,12 @@
+<% posts.order(:id).each do |post| %>
+	<tr>
+		<th class="row"> 
+		 <div id="detail_link">
+		    <%= link_to post.name, edit_post_path(post) , id:"edit_link" , remote: true %>
+		    <%#= post.name%>
+		  </div>
+		  <br>
+		</th>
+	</tr>
+
+<% end %>

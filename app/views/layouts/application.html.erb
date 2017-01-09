@@ -8,24 +8,78 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  </head>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
 
-  <body >
-    <br>
-       <%= yield %>
-        <div align="center">
-    <% if current_user %>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   </head>
+
+<body>
+
+
+<nav class="navbar navbar-inverse">
+<!--   <div class="container-fluid">
+ -->      <div class ="row">
+
+
+  <div class="col-xs-12 col-md-8">
+    <div class="navbar-header">
+    <%= link_to "SK" , root_path ,class: "navbar-brand" %> 
+    </div>
+</div>
+
+  <div class="col-xs-12 col-md-4">
+
+    <ul class="nav navbar-nav">
+
+    <li>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">
+        <%= link_to "Home", root_path %>
+
+      </button>
+      </li>
+      <li>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+      <% if current_user %>
     <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
-    <%= link_to "Login" , new_user_session_path %>
+    <%= link_to "Login"  %>
     <% end %>
+    </button> </li>
+    <li>
+     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">
+        <%= link_to "Index", posts_path %>
+      </button>
+      </li>   
+       <li>
+     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">
+        <%= link_to "New", new_post_path %>
+      </button>
+      </li> 
+    </ul>
     </div>
-
+    </div>
+  </div>
+</nav>
+ <%= yield %>
   </body>
+
+ <footer>
+  <div class="footer-bottom">
+        <div class="container">
+            <p class="pull-left"> 
+            
+     </p>
+            <div class="pull-right">
+                
+                </div>
+                </div>
+                </div>
+                </footer>
 </html>

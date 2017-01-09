@@ -1,30 +1,30 @@
 <div class="container">
-<header>
-   <h1>POSTS</h1>
-</header>
-<nav>
-  
-    <% @posts.each do |post| %>
-   <%= link_to post.name, id: "detail_link", remote: true %>
-      <br>
-     <% end %>
-  </ul>
-</nav>
-<div id = "detail">
- 
-  <%= render 'detail', post: @post %>
-<pagination>
-   <%= paginate @posts %>
-    <%= page_entries_info @posts %>
-  </pagination>
-
-
+<div class="row">
+  <div class="col-md-4">
+  <table class="table table-bordered table-inverse">
+    <thead>
+    <tr>
+    <th>NAME</th>
+    </tr>
+    </thead>
+    <tbody>
+      <div id ="post_index">
+          <%= render '/posts/post_index', posts: @posts  %>
+      </div>
+        </tbody> 
+    </table>
+  </div>
+      <div class="col-md-8">
+      <div id="new_link">
+     <h1> hi </h1>
+        
 </div>
 </div>
+</div>
+     </div>
 
 <footer><center>
-<%= link_to 'New Post', new_post_path %>
-  
+<%= link_to 'New Post', new_post_path , id: "new_link" , remote: true %>
 </center></footer>
 
 
