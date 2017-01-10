@@ -7,11 +7,14 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+
 <!-- Latest compiled and minified JavaScript -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
 
@@ -23,63 +26,123 @@
 <body>
 
 
-<nav class="navbar navbar-inverse">
-<!--   <div class="container-fluid">
- -->      <div class ="row">
 
-
-  <div class="col-xs-12 col-md-8">
+<div id="navbar">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="navbar-header">
-    <%= link_to "SK" , root_path ,class: "navbar-brand" %> 
-    </div>
-</div>
-
-  <div class="col-xs-12 col-md-4">
-
-    <ul class="nav navbar-nav">
-
-    <li>
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">
-        <%= link_to "Home", root_path %>
-
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
       </button>
-      </li>
-      <li>
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
-      <% if current_user %>
+      <%= link_to "SK" , root_path ,class: "navbar-brand" %> 
+    </div>
+     <div class="pull-right">
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active">
+              <%= link_to "Home" , root_path ,class: "navbar-brand" %> 
+        </li>
+        <li><a href="#">Link</a></li>
+         <li>
+        <% if current_user %>
     <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
-    <%= link_to "Login"  %>
+<%= link_to 'Login', root_path, data: { toggle: 'modal', target:'#myModal'} %>
     <% end %>
-    </button> </li>
-    <li>
-     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">
-        <%= link_to "Index", posts_path %>
-      </button>
-      </li>   
-       <li>
-     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">
-        <%= link_to "New", new_post_path %>
-      </button>
+    </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a> 
+          <ul class="dropdown-menu">
+            <li class="kopie"><a href="#">Dropdown</a></li>
+            <li><a href="#">Dropdown Link 1</a></li>
+            <li class="active"><a href="#">Dropdown Link 2</a></li>
+            <li><a href="#">Dropdown Link 3</a></li>           
+            
+        </li>
+      </ul>
+      <li>
+              <%= link_to "New", new_post_path %>
+
+</li>
+ <li>
+          <%= link_to "Index", posts_path %>
       </li> 
-    </ul>
     </div>
-    </div>
-  </div>
+
+    <!-- /.navbar-collapse -->
+  </nav>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </nav>
+</div>
+
+
  <%= yield %>
   </body>
 
- <footer>
-  <div class="footer-bottom">
-        <div class="container">
-            <p class="pull-left"> 
-            
-     </p>
-            <div class="pull-right">
-                
-                </div>
-                </div>
-                </div>
-                </footer>
-</html>
+<!--footer start from here-->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-6 footerleft ">
+        <div class="logofooter"> Logo</div>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+        <p><i class="fa fa-map-pin"></i> 210, Aggarwal Tower, Rohini sec 9, New Delhi -        110085, INDIA</p>
+        <p><i class="fa fa-phone"></i> Phone (India) : +91 9999 878 398</p>
+        <p><i class="fa fa-envelope"></i> E-mail : info@webenlance.com</p>
+        
+      </div>
+      <div class="col-md-2 col-sm-6 paddingtop-bottom">
+        <h6 class="heading7">GENERAL LINKS</h6>
+        <ul class="footer-ul">
+          <li><a href="#"> Career</a></li>
+          <li><a href="#"> Privacy Policy</a></li>
+          <li><a href="#"> Terms & Conditions</a></li>
+          <li><a href="#"> Client Gateway</a></li>
+          <li><a href="#"> Ranking</a></li>
+          <li><a href="#"> Case Studies</a></li>
+          <li><a href="#"> Frequently Ask Questions</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6 paddingtop-bottom">
+        <h6 class="heading7">LATEST POST</h6>
+        <div class="post">
+          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 paddingtop-bottom">
+        <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+          <div class="fb-xfbml-parse-ignore">
+            <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--footer start from here-->
+
+<div class="copyright">
+  <div class="container">
+    <div class="col-md-6">
+      <p>© 2016 - All Rights with Webenlance</p>
+    </div>
+    <div class="col-md-6">
+      <ul class="bottom_ul">
+        <li><a href="#">webenlance.com</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Faq's</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Site Map</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
