@@ -9,7 +9,7 @@
             </div>
 <div class="row">
 <div class="col-md-4">
-<%= form_for @post, remote: true  do |f| %>
+<%= form_for @post, remote: true , :html => { :multipart => true } do |f| %>
 
    <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -37,6 +37,9 @@
     <%= f.text_area :content , class: "form-control", placeholder: "content" %>
   </div>
   <%= f.hidden_field :user_id, value: @user%>
+  
+    <%= f.file_field :photo %>
+
 
 <div class="btn btn-lg btn-success btn-block">
   <div class="actions">

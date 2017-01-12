@@ -65,7 +65,7 @@ class PostsController < ApplicationController
     @posts = Post.all
     respond_to do |format|
       if @post.save
-        format.html 
+        format.html { redirect_to @post }
         format.js
       else
         format.html
@@ -109,6 +109,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name, :title, :content ,:user_id)
+      params.require(:post).permit(:name, :title, :content ,:user_id , :photo)
     end
 end

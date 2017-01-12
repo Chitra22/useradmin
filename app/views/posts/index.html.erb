@@ -1,11 +1,12 @@
 
+
+
+<div class="container">
+
 <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
 <%= submit_tag "Search" %>
 <% end %>
-
-
-<div class="container">
 <div class="row">
   <div class="col-md-8" style="overflow: scroll; height: 400px; width: 400px;">
   <table class="table table-bordered table-inverse">
@@ -33,7 +34,5 @@
 <center>
 <%= link_to 'New Post', new_post_path , id: "new_link" , remote: true %>
 </center>
-
-
 
 
