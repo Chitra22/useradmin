@@ -2,4 +2,9 @@ class Post < ApplicationRecord
 	  belongs_to :user 
 	  max_paginates_per 20
 	 has_many :comments, :dependent => :destroy
+
+
+def self.search(search)
+  where("name LIKE ?", "%#{search}%") 
+end
 end
