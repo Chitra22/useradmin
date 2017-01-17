@@ -1,5 +1,6 @@
 
 <p id="notice"><%= notice %></p>
+<%= image_tag @post.photo.url(:small) %>
 
 <table class="table table-striped">
 <thead>
@@ -14,6 +15,7 @@
     <td><%= @post.name %><br /></td>
      <td><%= @post.content %><br /></td>
     <td><%= @post.title %><br /></td>
+
     </tr>
     </tbody>
     </table>
