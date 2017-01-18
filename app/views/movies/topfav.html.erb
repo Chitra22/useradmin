@@ -1,0 +1,35 @@
+  <h3> <%= @list.runtime %></h3>
+
+ <h1 align="center"> <strong> TOP 250 MOVIES </strong></h1> 
+<hr> 
+<br>
+  <div class="span8">
+      <table class="table table-striped" align ="center">
+        <thead>
+          <tr>
+	    <th>Movie Name</th>	
+          </tr>
+        </thead>
+        <tbody>
+	
+        <% @quote.each do | quote | %>
+          <tr>
+	    <td> 
+	     <a href="#" data-toggle="tooltip" title="<%= @list.runtime %> "><%= quote %> </a>
+</td>
+          </tr>
+         <% end %>
+	
+	
+        </tbody>
+      </table>
+    </div>
+ <div class="container">
+  <h3>Tooltip Example</h3>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
