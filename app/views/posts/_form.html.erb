@@ -8,7 +8,7 @@
               <div id="messages_content"></div>
             </div>
 <div class="row">
-<div class="col-md-4">
+<div class="col-md-8">
 <%= form_for @post, remote: true , :html => { :multipart => true } do |f| %>
 
    <% if @post.errors.any? %>
@@ -17,6 +17,7 @@
 
       <ul>
       <% @post.errors.full_messages.each do |message| %>
+
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -34,13 +35,11 @@
 
   <div class="form-group">
     <%= f.label :content %>
-    <%= f.text_area :content , class: "form-control", placeholder: "content" %>
+    <%= f.cktext_area :content , class: "form-control", placeholder: "content" %>
   </div>
   <%= f.hidden_field :user_id, value: @user%>
   
     <%= f.file_field :photo %>
-
-
 <div class="btn btn-lg btn-success btn-block">
   <div class="actions">
     <%= f.submit %>

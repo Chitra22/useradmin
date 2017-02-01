@@ -41,7 +41,6 @@ class PostsController < ApplicationController
     @post = Post.new
 
     @user = current_user.id
-    
     respond_to do |format|
       format.html
       format.js
@@ -62,10 +61,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     # @post.created_by = current_user.email
-    @posts = Post.all
+    # @posts = Post.all
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post }
+        format.html { redirect_to @post, notice: 'created' }
         format.js
       else
         format.html
