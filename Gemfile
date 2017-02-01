@@ -11,6 +11,12 @@ gem 'kaminari'
 gem 'spotlite'
 gem 'httparty'
 
+gem "ckeditor"
+
+gem "carrierwave"
+gem "mini_magick"
+
+
 
 gem "paperclip", "~> 5.0.0"
 
