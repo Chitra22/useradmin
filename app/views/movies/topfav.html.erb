@@ -1,4 +1,5 @@
-  <h3> <%= @list.runtime %></h3>
+  
+
 
  <h1 align="center"> <strong> TOP 250 MOVIES </strong></h1> 
 <hr> 
@@ -7,29 +8,24 @@
       <table class="table table-striped" align ="center">
         <thead>
           <tr>
-	    <th>Movie Name</th>	
+		    <th>Movie Name</th>	
           </tr>
         </thead>
         <tbody>
-	
-        <% @quote.each do | quote | %>
-          <tr>
-	    <td> 
-	     <a href="#" data-toggle="tooltip" title="<%= @list.runtime %> "><%= quote %> </a>
-</td>
-          </tr>
-         <% end %>
-	
+        <% @quote.each_with_index do | quote,index | %>
+            <tr>
+        	 
+<td><a href="http://www.imdb.com/<%= @url[index]%>" data-toggle="tooltip" title= "<%= Movie.fetch_details('http://www.imdb.com/'+@url[index])%>">  <%= quote %> </a></td>
+		   	   
+	   	     </td>
+   			</tr>
+          <% end %>
 	
         </tbody>
       </table>
     </div>
- <div class="container">
-  <h3>Tooltip Example</h3>
-</div>
-
 <script>
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
+  $('[data-toggle="tooltip"]').tooltip(); 
 });
 </script>
