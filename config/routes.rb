@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   resources :posts do
   	resources :comments
   end
+match '*path' => redirect('/'), via: :get
 
 end
