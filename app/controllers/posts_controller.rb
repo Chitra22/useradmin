@@ -3,8 +3,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
     respond_to :html, :js
-    
-skip_before_action :authenticate_user!, raise: false
+
+skip_before_filter :verify_authenticity_token
 
 
 
