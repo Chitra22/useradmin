@@ -40,17 +40,13 @@
   <%= f.hidden_field :user_id, value: @user%>
   
     <%= f.file_field :photo %>
-<div class="btn btn-lg btn-success btn-block">
   <div class="actions">
     <%= f.submit %>
-    </div>
     </div>
  </div>
   </div>
 <% end %>
-  <script>
-            // $('#new_post').submit(function(e) {
-            
+  <script>       
 
       $(document).ready(function(){
 $("#new_post").submit(function(){
@@ -74,4 +70,3 @@ $("#new_post").submit(function(){
  
 });
 </script>
-        </script>  

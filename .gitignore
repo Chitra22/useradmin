@@ -9,6 +9,13 @@
 
 # Ignore secrets and configurations
 /db/schema.rb
+/config/database.yml
+/config/secrets.yml
+
+# Ignore protofolio
+
+/public/assets/public/*
+
 
 
 
@@ -20,6 +27,5 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-
 
 
