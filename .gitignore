@@ -9,6 +9,8 @@
 
 # Ignore secrets and configurations
 /db/schema.rb
+/config/database.yml
+/config/secrets.yml
 
 
 
