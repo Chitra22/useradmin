@@ -12,6 +12,10 @@
 /config/database.yml
 /config/secrets.yml
 
+# Ignore profile photos
+
+/public/assets/posts/*
+
 
 
 # Ignore all logfiles and tempfiles.
