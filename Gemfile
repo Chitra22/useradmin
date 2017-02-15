@@ -15,6 +15,8 @@ gem "ckeditor"
 
 gem "carrierwave"
 gem "mini_magick"
+gem "letter_opener", :group => :development
+
 
 gem 'rails_12factor', group: :production
 
