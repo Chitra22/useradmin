@@ -63,10 +63,20 @@ skip_before_filter :verify_authenticity_token
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    binding.pry
+    @user = current_user
+
+
     # @post.created_by = current_user.email
     # @posts = Post.all
     respond_to do |format|
       if @post.save
+        UserMailer.welcome_email(@user,@post).deliver_now
+        #  pdf = WickedPdf.new.pdf_from_html_file('/user_mailer/welcome_email')
+        # save_path = Rails.root.join('pdfs','file.pdf')
+        # File.open(save_path, 'wb') do |file|
+        # file << pdf
+        # end
         format.html { redirect_to @post, notice: 'created' }
         format.js
       else

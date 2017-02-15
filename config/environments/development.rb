@@ -27,9 +27,11 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.delivery_method = :welcome_email
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -44,6 +46,8 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
+  
+  config.action_mailer.delivery_method = :letter_opener
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
@@ -51,4 +55,17 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+ActionMailer::Base.delivery_method = :sendmail
+ActionMailer::Base.sendmail_settings = {
+  :location => '/usr/sbin/sendmail',
+  :arguments => '-i -t'
+}
+# ActionMailer::Base.perform_deliveries = true
+# ActionMailer::Base.raise_delivery_errors = true
+# ActionMailer::Base.delivery_method = :test
+# ActionMailer::Base.delivery_method = :file
+# ActionMailer::Base.file_settings = { :location => Rails.root.join('tmp/mail') }
+
+
 end

@@ -10,7 +10,9 @@ gem 'pry'
 gem 'kaminari'
 gem 'spotlite'
 gem 'httparty'
-
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem "letter_opener", :group => :development
 gem "ckeditor"
 
 gem "carrierwave"
