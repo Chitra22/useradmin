@@ -16,6 +16,8 @@ gem "ckeditor"
 gem "carrierwave"
 gem "mini_magick"
 gem "letter_opener", :group => :development
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 
 gem 'rails_12factor', group: :production
