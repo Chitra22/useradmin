@@ -62,11 +62,13 @@ skip_before_filter :verify_authenticity_token
   # POST /posts
   # POST /posts.json
   def create
+    @user = current_user
     @post = Post.new(post_params)
     # @post.created_by = current_user.email
     # @posts = Post.all
     respond_to do |format|
       if @post.save
+        UserMailer.welcome_email(@user,@post).deliver_now
         format.html { redirect_to @post, notice: 'created' }
         format.js
       else
