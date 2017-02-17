@@ -1,0 +1,73 @@
+<style type="text/css">
+  .r-tabs {
+  position: relative;
+  background: transparent;
+}
+
+/* Tab element */
+.r-tabs .r-tabs-nav .r-tabs-tab {
+  position: relative;
+}
+
+/* Tab anchor */
+.r-tabs .r-tabs-nav .r-tabs-anchor {
+  display: inline-block;
+  padding: 15px 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: #bbbbbb !important;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+}
+
+/* Disabled tab */
+.r-tabs .r-tabs-nav .r-tabs-state-disabled {
+  opacity: 0.5;
+}
+
+/* Active state tab anchor */
+.r-tabs .r-tabs-nav .r-tabs-state-active .r-tabs-anchor {
+  color: #333 !important;
+  text-shadow: none;
+  background-color: transparent;
+  border-bottom: 3px solid #ffc80a;
+}
+
+/* Tab panel */
+.r-tabs .r-tabs-panel {
+  /*border-bottom: 1px solid #dee2e7;*/
+}
+
+/* Accordion anchor */
+.r-tabs .r-tabs-accordion-title .r-tabs-anchor {
+  display: block;
+  padding: 10px;
+  background-color: #e8e8e8;
+  color: #666 !important;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.form-control::-webkit-input-placeholder { color: grey !important; }
+.form-control:-moz-placeholder { color: grey !important; }
+.form-control::-moz-placeholder { color: grey !important; }
+.form-control:-ms-input-placeholder { color: grey !important; }
+
+
+/* Active accordion anchor */
+.r-tabs .r-tabs-accordion-title.r-tabs-state-active .r-tabs-anchor {
+  color: #333 !important;
+  text-shadow: none;
+  border-bottom: 2px solid #ffd200;
+  background: #dedede;
+}
+
+/* Disabled accordion button */
+.r-tabs .r-tabs-accordion-title.r-tabs-state-disabled {
+  opacity: 0.5;
+}
+
+</style>
