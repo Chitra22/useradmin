@@ -1,0 +1,256 @@
+<ul class="r-tabs-nav" id ="render_tabs">
+  <li class="r-tabs-tab r-tabs-state-default"><a href="#cod" class="r-tabs-anchor">Cash Pickup</a></li>
+  <li class="r-tabs-tab r-tabs-state-default"><a href="#ebs" class="r-tabs-anchor">EMI</a></li>
+  <li class="r-tabs-tab r-tabs-state-default"><a href="#netbanking" class="r-tabs-anchor">Net banking</a></li>
+  <li class="r-tabs-tab r-tabs-state-active"><a href="#juspay" class="r-tabs-anchor">Credit / Debit Card</a></li>
+  <li class="r-tabs-tab r-tabs-state-default"><a href="#wallet" class="r-tabs-anchor">Wallets</a></li>
+</ul>
+<div id="cod" class="r-tabs-panel r-tabs-state-active" style="display: none;">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-1 col-sm-offset-1 col-sm-8 col-xs-12 nopadding">
+      <div class="">
+        <div class='paymentLogos1'>
+          <div class="formRight" id="pin_check_form" style="display:none;">
+            <%= form_tag('/services/check_pincode_new', method: 'post', id: 'gateway_form', remote: true ) do %>
+              <%= number_field_tag :postal_code, nil, {id: 'pin', class: 'form-control inputTxt', placeholder: 'Postal Code', min: 110000, max: 999999, required: true}%>
+              <%= hidden_field_tag(:url_hash, @url_hash, {class: 'url_store'}) %>
+              <%= hidden_field_tag(:time_limit1_t, params['time_limit1'], ) %>
+              <%= hidden_field_tag(:time_limit2_t, params['time_limit2'], ) %>
+                <div class="col-md-12 col-sm-12 text-right" style="margin-top: 14px;">
+                  <div class="form-group">
+                    <%#= submit_tag('Proceed to Payment',:name => 'Payment Proceed',:class => 'paymentTabArealink') %>
+                    <% if params['time_limit1'].present? || params['time_limit2'].present?%>
+                      <% if params['time_limit1'] == "false"  || params['time_limit2'] == "false"%>
+                          <button type="submit" class="paymentTabArealink1">Pay <i class="fa fa-inr"></i> <%= @order.order_services.sum(:grand_total).ceil%></button>
+                      <%else%>
+                          <button type="submit" class="paymentTabArealink1">Pay <i class="fa fa-inr"></i> <%= (@order.order_services.sum(:grand_total)-(@amount+@tax_deduction)).ceil%></button>
+                      <%end%>
+                    <% else %>
+                      <button type="submit" class="paymentTabArealink1">Pay <i class="fa fa-inr"></i> <%= @order.order_services.sum(:grand_total).ceil%></button>
+                    <% end %>
+                  </div>
+                </div>
+              <%#= submit_tag('Proceed to Payment',:name => 'Payment Proceed',:class => 'paymentTabArealink') %>
+            <% end %>
+          </div>
+
+          <div id="cash_pickup" class='formRight'>
+            <%= render "/payments/cash_pickup_form_new" %>
+          </div>
+          <!-- <small id="cash_hint">*For Cash Delivery  <i class="fa fa-inr"></i> 300 is charged.</small> -->
+        </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div id="ebs" class="r-tabs-panel r-tabs-state-default" style="display: none;">
+    <p>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-1 col-sm-offset-1 col-sm-8 col-xs-12">
+          <div class="formRight">
+            <div class="row">
+              <%= form_tag(@helpdesk_payment_url, method: 'post', id: 'gateway_form_ebs' ) do %>
+              <%= hidden_field_tag(:url_hash, @url_hash, {class: 'url_store'}) %>
+              <%= hidden_field_tag(:payment_mode, 'ebs') %>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <%= text_field_tag :name, @ticket['customer']['name'], {id: 'name', class: 'form-control inputTxt', placeholder: 'Name', required: true }%>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <%= text_field_tag :address, params[:address], {id: 'address', class: 'form-control inputTxt', placeholder: 'Address', required: true }%>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <%= text_field_tag :city, @ticket['ticket']['city_name'], {id: 'city', class: 'form-control inputTxt', placeholder: 'City', required: true }%>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                     <%= text_field_tag :state, @ticket['ticket']['state_name'], {id: 'state', class: 'form-control inputTxt', placeholder: 'State', required: true }%>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <%= select_tag 'country_code', options_for_select([['India','IND'],['Singapore', 'SGP']]) , {:class => 'form-control input-lg', :id => 'country_code', 'aria-required' =>'true', 'aria-describedby'=>'director_count-error', 'aria-invalid'=>'false', :style => "margin-top: 8px;"} %>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <%= number_field_tag :postal_code, params[:postal_code], {id: 'pin', class: 'form-control inputTxt', placeholder: 'Postal Code', min: 110000, max: 999999, required: true}%>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 text-right" style="margin-top: 14px;">
+                    <div class="form-group">
+                      <% if params['time_limit1'].present? || params['time_limit2'].present?%>
+                        <% if params['time_limit1'] == "false"  || params['time_limit2'] == "false"%>
+                            <button type="submit" class="paymentTabArealink ebs_pay pull-right" payment="gateway_form_ebs">Pay <i class="fa fa-inr"></i> <%= @order.order_services.sum(:grand_total).ceil.to_i/12 %></button>
+                        <%else%>
+                            <button type="submit" class="paymentTabArealink ebs_pay pull-right" payment="gateway_form_ebs">Pay <i class="fa fa-inr"></i> <%= (@order.order_services.sum(:grand_total)-(@amount+@tax_deduction)).ceil.to_i/12 %></button>
+                        <%end%>
+                      <% else %>
+                        <button type="submit" class="paymentTabArealink ebs_pay pull-right" payment="gateway_form_ebs">Pay <i class="fa fa-inr"></i> <%= @order.order_services.sum(:grand_total).ceil.to_i/12 %></button>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p>
+</div>
+<div id="netbanking" class="r-tabs-panel r-tabs-state-default" style="display: none;">
+    <p>
+      <div class="row" style="font-size: 16px; padding-left: 30%; text-transform: uppercase; font-weight: 500; padding-bottom: 14px; padding-top: 14px;">
+        Choose Your Bank
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-1 col-sm-offset-1 col-sm-8 col-xs-12">
+          <div class="row">
+            <div class='bhoechie-tab-content'>
+              <form class='juspay_inline_form text-center' id='payment_form'>
+                <input type='hidden' class='merchant_id' value="<%= @juspay_params['merchant_id'] %>">
+                <input type='hidden' class='order_id' value="<%= @juspay_params['order_id'] %>">
+                <input type='hidden' class='payment_method_type' value='NB'>
+                <select class='payment_method inputTxt1_new' style='display: inline-block; margin-bottom: 1em; padding: 0.8em !important; width: 100%;'>
+                  <option value='NB_ANDHRA' label='Andhra Bank'>Andhra Bank</option>
+                  <option value='NB_AXIS' label='Axis Bank'>Axis Bank</option>
+                  <option value='NB_BOI' label='Bank of India'>Bank of India</option>
+                  <option value='NB_BOM' label='Bank of Maharashtra'>Bank of Maharashtra</option>
+                  <option value='NB_CANR' label='Canara Bank'>Canara Bank</option>
+                  <option value='NB_CBI' label='Central Bank Of India'>Central Bank Of India</option>
+                  <option value='NB_CITI' label='Citi Bank NetBanking'>Citi Bank NetBanking</option>
+                  <option value='NB_CORP' label='Corporation Bank'>Corporation Bank</option>
+                  <option value='NB_CUB' label='CityUnion'>CityUnion</option>
+                  <option value='NB_DCB' label='Development Credit Bank'>Development Credit Bank</option>
+                  <option value='NB_DEUT' label='Deutsche Bank'>Deutsche Bank</option>
+                  <option value='NB_DLS' label='Dhanalaxmi Bank'>Dhanalaxmi Bank</option>
+                  <option value='NB_FED' label='Federal Bank'>Federal Bank</option>
+                  <option value='NB_HDFC' label='HDFC Bank'>HDFC Bank</option>
+                  <option value='NB_ICICI' label='ICICI Netbanking'>ICICI Netbanking</option>
+                  <option value='NB_IDBI' label='Industrial Development Bank of India'>Industrial Development Bank of India</option>
+                  <option value='NB_INDB' label='Indian Bank'>Indian Bank</option>
+                  <option value='NB_INDUS' label='IndusInd Bank'>IndusInd Bank</option>
+                  <option value='NB_ING' label='ING Vysya Bank'>ING Vysya Bank</option>
+                  <option value='NB_IOB' label='Indian Overseas Bank'>Indian Overseas Bank</option>
+                  <option value='NB_JNK' label='Jammu and Kashmir Bank'>Jammu and Kashmir Bank</option>
+                  <option value='NB_KARN' label='Karnataka Bank'>Karnataka Bank</option>
+                  <option value='NB_KOTAK' label='Kotak Bank'>Kotak Bank</option>
+                  <option value='NB_KVB' label='Karur Vysya'>Karur Vysya</option>
+                  <option value='NB_PNB' label='Punjab National Bank'>Punjab National Bank </option>
+                  <option value='NB_PNBCORP' label='Punjab National Bank Corporate'>Punjab National Bank Corporate</option>
+                  <option value='NB_SBBJ' label='State Bank of Bikaner and Jaipur'>State Bank of Bikaner and Jaipur</option>
+                  <option value='NB_SBH' label='State Bank of Hyderabad'>State Bank of Hyderabad</option>
+                  <option value='NB_SBI' label='State Bank of India'>State Bank of India</option>
+                  <option value='NB_SBM' label='State Bank of Mysore'>State Bank of Mysore</option>
+                  <option value='NB_SBP' label='State Bank of Patiala'>State Bank of Patiala</option>
+                  <option value='NB_SBT' label='State Bank of Travancore'>State Bank of Travancore</option>
+                  <option value='NB_SOIB' label='South Indian Bank'>South Indian Bank</option>
+                  <option value='NB_UBI' label='Union Bank of India'>Union Bank of India</option>
+                  <option value='NB_UNIB' label='United Bank Of India'>United Bank Of India</option>
+                  <option value='NB_VJYB' label='Vijaya Bank'>Vijaya Bank</option>
+                  <option value='NB_YESB' label='Yes Bank'>Yes Bank</option>
+                </select>
+                <button type='submit' class='make_payment_cart btn btn-default'>Pay</button>
+                <input type='hidden' class='redirect' value='true'>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p>
+</div>
+<div id="juspay" class="r-tabs-state-default r-tabs-panel" style="display: block;">
+    <p>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-1 col-sm-offset-1 col-sm-8 col-xs-12">
+          <div class="row">
+            <iframe id='debitandCreditDetails' src=<%= @juspay_url %> width='420' style='border: 0; height: calc(); min-height: 340px;'>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </p>
+</div>
+<div id="wallet" class="r-tabs-state-default r-tabs-panel">
+    <p>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 col-sm-offset-2 col-sm-8 col-xs-12">
+        <div class="row">
+          <%= form_tag(@helpdesk_payment_url, method: 'post', id: 'gateway_form_wallet' ) do %>
+          <div class='paymentLogos1'>
+            <div class='radio formBgNew_Mobi'>
+              <input id='radio-6' class='radio-custom' name='payment_mode' type='radio' value ='paytm' >
+              <label for='radio-6' class='radio-custom-label'><%= image_tag('logo_paytm.png') %><!-- <span style="color: #e67e22; display: inline; font-size: 14px;">*</span> --></label>
+              <!-- <span>(Flat Rs.400 Cashback on min. transaction of Rs.3,000/-)</span> -->
+            </div>
+          </div>
+          <div class='paymentLogos1'>
+            <div class='radio formBgNew_Mobi'>
+              <input id='radio-4' class='radio-custom payment_mode' name='payment_mode' type='radio' value ='mobikwik' >
+              <label for='radio-4' class='radio-custom-label'><%= image_tag('logo_mobikwik.png') %><!-- <span style="color: #e67e22; display: inline; font-size: 14px;">*</span> --></label>
+              <!-- <span>(Flat Rs.400 Cashback on min. transaction of Rs.3,000/-)</span> -->
+              <!-- <span>Avail 5% Cashback. Offer valid till November 5, 2016.</span> -->
+            </div>
+          </div>
+          <div class='paymentLogos1'>
+            <div class="radio formBgNew_fC">
+                <input id="radio-7" class="radio-custom" name="payment_mode" type="radio" value ="free_charge" >
+                <label for="radio-7" class="radio-custom-label"><%= image_tag("logo_freecharge.png") %></label>
+                <!-- <span>(Get Rs.100/- cashback)</span> -->
+            </div>
+          </div>
+          <div class='paymentLogos1'>
+            <div class='radio formBgNew_payU'>
+              <input id='radio-2' class='radio-custom payment_mode' name='payment_mode' type='radio' value ='payu_wallet'>
+              <label for='radio-2' class='radio-custom-label'><%= image_tag('logo_payumoney.png') %></label>
+              <!-- <span>(1% additional cashback)</span> -->
+            </div>
+            <!-- <span class='orangeColorTxt'>* Wallets have a spend limit of <i class="fa fa-inr" aria-hidden="true"></i>10,000 as per RBI guidelines</span> -->
+            <!-- <span class='orangeColorTxt'>* Subject to a maximum cashback of <i class="fa fa-inr" aria-hidden="true"></i> 300</span> -->
+          </div>
+          <div class='paymentLogos1'>
+            <%= hidden_field_tag(:url_hash, @url_hash, {class: 'url_store'}) %>
+            <div class="col-md-12 col-sm-12 text-right" style="margin-top: 14px;">
+              <div class="form-group">
+                <%#= submit_tag('Proceed to Payment',:name => 'Payment Proceed',:class => 'paymentTabArealink') %>
+                <% if params['time_limit1'].present? || params['time_limit2'].present?%>
+                  <% if params['time_limit1'] == 'false' || params['time_limit2'] == "false"%>
+                  <button type="submit" class="paymentTabArealink wallet_pay pull-right" id ='wallet_submit' payment="gateway_form_wallet">Pay <i class="fa fa-inr"></i> <%= @order.order_services.sum(:grand_total).ceil%></button>
+                  <%else%>
+                    <button type="submit" class="paymentTabArealink wallet_pay pull-right" id ='wallet_submit' payment="gateway_form_wallet">Pay <i class="fa fa-inr"></i> <%= (@order.order_services.sum(:grand_total)-(@amount+@tax_deduction)).ceil%></button>
+                  <%end%>
+                <% else %>
+                  <button type="submit" class="paymentTabArealink wallet_pay pull-right" id ='wallet_submit' payment="gateway_form_wallet">Pay <i class="fa fa-inr"></i> <%= @order.order_services.sum(:grand_total).ceil%></button>
+                <% end %>
+              </div>
+            </div>
+            <%#= submit_tag('Proceed to Payment',:name => 'Payment Proceed',:class => 'paymentTabArealink') %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </p>
+</div>
+<!--  <div id="tab-6" class="r-tabs-state-default r-tabs-panel" style="min-height: 490px;">
+    <p>0-=0-=0-=0-=</p>
+</div> -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // add a hash to the URL when the user clicks on a tab
+  $('a[data-toggle="tab"]').on('click', function(e) {
+    history.pushState(null, null, $(this).attr('href'));
+    alert("Hello! I am an alert box!!");
+  });
+  // navigate to a tab when the history changes
+  window.addEventListener("popstate", function(e) {
+    var activeTab = $('[href=' + location.hash + ']');
+    if (activeTab.length) {
+      activeTab.tab('show');
+    } else {
+      $('.nav-tabs a:first').tab('show');
+    }
+  });
+});
+</script>
