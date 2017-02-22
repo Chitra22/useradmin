@@ -35,4 +35,25 @@
 <%= link_to 'New Post', new_post_path , id: "new_link" , remote: true %>
 </center>
 
+<script type="text/javascript">
+   jQuery(document).ready(function($) {
 
+      if (window.history && window.history.pushState) {
+
+        $(window).on('popstate', function() {
+          var hashLocation = location.hash;
+          var hashSplit = hashLocation.split("#!/");
+          var hashName = hashSplit[1];
+          if (hashName !== '') {
+            var hash = window.location.hash;
+            if (hash === '') {
+              window.location.href = "/posts/new";
+                return false;
+            }
+          }
+        });
+
+      }
+
+    });
+    </script>

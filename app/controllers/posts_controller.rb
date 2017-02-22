@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
  
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!
+
 
     respond_to :html, :js
 
@@ -62,6 +64,7 @@ skip_before_filter :verify_authenticity_token
   # POST /posts
   # POST /posts.json
   def create
+    @user = current_user
     @post = Post.new(post_params)
     binding.pry
     @user = current_user
@@ -72,11 +75,14 @@ skip_before_filter :verify_authenticity_token
     respond_to do |format|
       if @post.save
         UserMailer.welcome_email(@user,@post).deliver_now
+<<<<<<< HEAD
         #  pdf = WickedPdf.new.pdf_from_html_file('/user_mailer/welcome_email')
         # save_path = Rails.root.join('pdfs','file.pdf')
         # File.open(save_path, 'wb') do |file|
         # file << pdf
         # end
+=======
+>>>>>>> 9b363ef561ea65dae5fc8656cc03647f5773d0e6
         format.html { redirect_to @post, notice: 'created' }
         format.js
       else

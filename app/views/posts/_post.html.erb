@@ -1,6 +1,5 @@
 
 <p id="notice"><%= notice %></p>
-<%= image_tag @post.photo.url(:small) %>
 
 <table class="table table-striped">
 <thead>
@@ -8,13 +7,16 @@
   <th><strong>Name:</strong></th>
  <th> <strong>Title:</strong></th>
   <th><strong>Content:</strong></th>
+  <th><strong>photo:</strong></th>
   </tr>
   </thead>
   <tbody>
   <tr>
     <td><%= @post.name %><br /></td>
     <td><%= @post.title %><br /></td>
-    <td><%= @post.content %><br /></td>
+    <td><%= raw @post.content %><br /></td>
+<td>    <%= image_tag @post.photo.url(:small) %></td>
+
     </tr>
     </tbody>
     </table>

@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+	  before_action :authenticate_user!
+
 
 
   def index
@@ -9,6 +11,7 @@ class MoviesController < ApplicationController
   		@list =Spotlite::Movie.new('0133093')
         @quote = Movie.scrape
         @url = Movie.imdb
+        binding.pry
 
 end
  def details
