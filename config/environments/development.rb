@@ -55,7 +55,7 @@ config.action_mailer.smtp_settings = {
   port:                 587,
   domain:               '@gmail.com',
   user_name:            'senthikumar15496@gmail.com',
-  password:             'lithyasri',
+  password:             '<%= ENV["pswd"] %>' ,
   authentication:       'plain',
   :ssl                  => true,
   :tls                  => true,
