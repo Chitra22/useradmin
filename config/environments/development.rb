@@ -29,15 +29,12 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
 
-<<<<<<< HEAD
   config.action_mailer.perform_caching = true
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
   config.action_mailer.delivery_method = :welcome_email
-=======
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { :host => "localhost:3002" }
   config.action_mailer.delivery_method = :letter_opener
->>>>>>> 9b363ef561ea65dae5fc8656cc03647f5773d0e6
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -52,10 +49,8 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-<<<<<<< HEAD
   
   config.action_mailer.delivery_method = :letter_opener
-=======
   config.action_mailer.perform_deliveries = true
 
 
@@ -71,7 +66,6 @@ config.action_mailer.smtp_settings = {
   :tls                  => true,
   :enable_starttls_auto => true    
 }
->>>>>>> 9b363ef561ea65dae5fc8656cc03647f5773d0e6
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
