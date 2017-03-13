@@ -1,4 +1,3 @@
-<style type="text/css">
   .r-tabs {
   position: relative;
   background: transparent;
@@ -70,4 +69,8 @@
   opacity: 0.5;
 }
 
-</style>
+/*datepicker*/
+#date
+{
+width : 15% ;
+}

@@ -17,16 +17,22 @@ skip_before_filter :verify_authenticity_token
 
     # @posts = Post.order(:name).page params[:page]
     # @posts = Post.order("name").page(params[:page]).per(2)
-
       respond_to do |format|
         format.html
        format.js
     end
-
-    if params[:search]
+if params[:search].present?
     @posts = Post.search(params[:search]).order("created_at DESC")
-  else
-    @posts = Post.all.order('created_at DESC')
+    if @posts == []
+        @posts = Post.title(params[:search]).order("created_at DESC")
+      end
+    if @posts == []
+        @posts = Post.id(params[:search]).order("created_at DESC")
+      end
+elsif params[:date].present?
+        @posts = Post.date(params[:date]).order("created_at DESC")
+     else   
+        @posts = Post.all.order('created_at DESC')
   end
     
   end

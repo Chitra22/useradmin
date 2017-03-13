@@ -7,8 +7,16 @@ class Post < ApplicationRecord
 def self.search(search)
   where("name LIKE ?", "%#{search}%") 
 end
-
-
+def self.title(search)
+	where("title LIKE ?", "%#{search}%" )
+end
+def self.id(search)
+	where("id = ?", "#{search}" )
+end
+def self.date(date)
+	binding.pry
+	where("created_at = ?", "#{date}" )
+end
 has_attached_file :photo, :styles => { :small => "150x150>" },
                   :url  => "/assets/posts/:id/:style/:basename.:extension",
                   :path => ":rails_root/public/assets/posts/:id/:style/:basename.:extension"

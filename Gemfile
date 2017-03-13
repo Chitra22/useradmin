@@ -18,6 +18,7 @@ gem "mini_magick"
 gem "letter_opener", :group => :development
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'strftime', '~> 1.0'
 
 
 
