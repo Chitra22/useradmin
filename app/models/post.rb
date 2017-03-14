@@ -14,7 +14,6 @@ def self.id(search)
 	where("id = ?", "#{search}" )
 end
 def self.date(date)
-	binding.pry
 	where("created_at = ?", "#{date}" )
 end
 has_attached_file :photo, :styles => { :small => "150x150>" },
