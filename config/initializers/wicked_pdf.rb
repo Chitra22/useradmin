@@ -18,10 +18,7 @@ WickedPdf.config = {
   # Layout file to be used for all PDFs
   # (but can be overridden in `render :pdf` calls)
   # layout: 'pdf.html',
-<<<<<<< HEAD
 :exe_path => '/usr/bin/wkhtmltopdf'
  
 
-=======
->>>>>>> 9b363ef561ea65dae5fc8656cc03647f5773d0e6
 }
