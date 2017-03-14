@@ -249,7 +249,7 @@ Devise.setup do |config|
  :port                 => 587,
  :domain               => "railscasts.com",
  :user_name            => "senthikumar15496@gmail.com",
- :password             => "lithyasri",
+ :password             => "Senthil15496",
  :authentication       => "plain",
  :enable_starttls_auto => true
 }

@@ -30,7 +30,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = true
-  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.default_url_options = { :host => "localhost:3002" }
   config.action_mailer.delivery_method = :welcome_email
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { :host => "localhost:3002" }
@@ -58,12 +58,12 @@ config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
   port:                 587,
-  domain:               '@gmail.com',
+  domain:               'gmail.com',
   user_name:            'senthikumar15496@gmail.com',
-  password:             '<%= ENV["pswd"] %>' ,
+  password:             'Senthil15496' ,
   authentication:       'plain',
-  :ssl                  => true,
-  :tls                  => true,
+  # :ssl                  => true,
+  # :tls                  => true,
   :enable_starttls_auto => true    
 }
 
@@ -72,13 +72,12 @@ config.action_mailer.smtp_settings = {
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
+config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 ActionMailer::Base.delivery_method = :sendmail
-ActionMailer::Base.sendmail_settings = {
-  :location => '/usr/sbin/sendmail',
-  :arguments => '-i -t'
-}
+# ActionMailer::Base.sendmail_settings = {
+#   :location => '/usr/sbin/sendmail',
+#   :arguments => '-i -t'
+# }
 # ActionMailer::Base.perform_deliveries = true
 # ActionMailer::Base.raise_delivery_errors = true
 # ActionMailer::Base.delivery_method = :test
