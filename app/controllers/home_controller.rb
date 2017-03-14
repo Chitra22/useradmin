@@ -7,6 +7,5 @@ before_action :authenticate_user!
       end
   def tabs 
   	@news = Home.tabs
-  	binding.pry
   end
 end
