@@ -1,11 +1,8 @@
-
-
-
 <div class="container">
-
 <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Enter name ,title or id" %>
-<input class="form-control" id="date" name="daterange"  placeholder="yyyy-mm-dd" type="text"/>
+<input type="text" class="form-control exec-calendarTxtbox" name="start" id="datepicker1" placeholder="start-date">
+<input type="text" class="form-control exec-calendarTxtbox" name="enddate" id="datepicker2" placeholder="end-date">
 <%= submit_tag "Search" %>
 <% end %>
 <div class="row">
@@ -35,41 +32,21 @@
 <center>
 <%= link_to 'New Post', new_post_path , id: "new_link" , remote: true %>
 </center>
-
-<script type="text/javascript">
-   jQuery(document).ready(function($) {
-
-      if (window.history && window.history.pushState) {
-
-        $(window).on('popstate', function() {
-          var hashLocation = location.hash;
-          var hashSplit = hashLocation.split("#!/");
-          var hashName = hashSplit[1];
-          if (hashName !== '') {
-            var hash = window.location.hash;
-            if (hash === '') {
-              window.location.href = "/posts/new";
-                return false;
-            }
-          }
-        });
-
-      }
-
-    });
-    </script>
 <script>
-$(function() {
+$(document).ready(function() {
+  var date = new Date();
+  var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  var end = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
-  $('input[name="daterange"]').daterangepicker(
-{
-    locale: {
-      format: 'YYYY-MM-DD'
-    },
-  
-}, 
-function(start, end, label) {
-    alert("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-});
+  $('#datepicker1').datepicker({
+    format: "yyyy-mm-dd",
+    todayHighlight: true,
+     autoclose: true
+  });
+  $('#datepicker2').datepicker({
+    format: "yyyy-mm-dd",
+    todayHighlight: true,
+    autoclose: true
+  });
 });
 </script>

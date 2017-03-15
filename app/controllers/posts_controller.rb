@@ -13,8 +13,7 @@ skip_before_filter :verify_authenticity_token
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
-
+         @posts = Post.all
     # @posts = Post.order(:name).page params[:page]
     # @posts = Post.order("name").page(params[:page]).per(2)
       respond_to do |format|
@@ -29,8 +28,10 @@ if params[:search].present?
     if @posts == []
         @posts = Post.id(params[:search]).order("created_at DESC")
       end
-elsif params[:date].present?
-        @posts = Post.date(params[:date]).order("created_at DESC")
+elsif params[:start] && params[:enddate].present?
+    start = params[:start].to_date.beginning_of_day
+    enddate = params[:enddate].to_date.end_of_day
+        @posts =  Post.date(start,enddate)
      else   
         @posts = Post.all.order('created_at DESC')
   end
@@ -79,6 +80,8 @@ elsif params[:date].present?
     # @posts = Post.all
     respond_to do |format|
       if @post.save
+            binding.pry
+
         UserMailer.welcome_email(@user,@post).deliver_now
         #  pdf = WickedPdf.new.pdf_from_html_file('/user_mailer/welcome_email')
         # save_path = Rails.root.join('pdfs','file.pdf')

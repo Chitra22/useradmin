@@ -6,6 +6,8 @@ before_action :authenticate_user!
       @posts = Post.order("name").page(params[:page]).per(4)
       end
   def tabs 
-  	@news = Home.tabs
+  	    # @posts = Post.all
+  	    @posts = Post.order(:name).page params[:page]
+    @posts = Post.order("name").page(params[:page]).per(2)
   end
 end
