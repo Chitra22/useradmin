@@ -1,0 +1,77 @@
+<%= form_for Detail.new  do |f| %>
+<div id="fullscreen_bg" class="fullscreen_bg"/>
+ <form class="form-signin">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+        <div class="panel panel-primary">
+        
+            <h3 class="text-center">
+               Update my information</h3>
+        
+        <div class="panel-body">   
+        
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span>
+                            </span>
+                            <input type="text" class="form-control" name="name" placeholder="Name" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            <input type="text" class="form-control exec-calendarTxtbox" name="start" id="datepicker1" placeholder="DOB">                        
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                            <input type="text" class="form-control" name="number" placeholder="Contactnumber" />
+                        </div>
+                    </div>
+                    
+                             <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+                            <input type="text" class="form-control" name="address" placeholder="Address" />
+                        </div>
+                    </div>
+                                       
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="radio-inline"><input type="radio" name="optradio">Male
+                           </label>
+                            <label class="radio-inline">
+                            <input type="radio" name="optradio">Female
+                            </label>
+                        </div>
+                    </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">
+			Save
+		</button>
+                      
+      
+      </div>
+       </div>
+        </div>
+    </div>
+</div>
+</form>
+</div> 
+<% end %>
+<script>
+$(document).ready(function() {
+  var date = new Date();
+  var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  var end = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  $('#datepicker1').datepicker({
+    format: "yyyy-mm-dd",
+    todayHighlight: true,
+     autoclose: true
+  });
+  });
+</script>

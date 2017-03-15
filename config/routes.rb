@@ -10,7 +10,9 @@ Rails.application.routes.draw do
  get "movies/topfav" => "movies#topfav"
  get "movies/details" => "movies#details"
  get "home/tabs" => "home#tabs"
+ get "details/new" => "details#new"
 
+  resources :details
 
    
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
