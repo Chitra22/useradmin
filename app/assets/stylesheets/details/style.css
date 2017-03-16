@@ -34,7 +34,7 @@ opacity: 0.8;
     left: 0;
     background-size: cover;
     background-position: 50% 50%;
-    background-image: url('http://blog.transfer-iphone-recovery.com/images/photo-with-blur-background.jpg');
+    background-image: url("/bg.jpg");
     background-repeat:repeat;
   }
   .glyphicon {

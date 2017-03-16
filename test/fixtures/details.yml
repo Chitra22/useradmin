@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 1
   name: MyString
-  dob: 1
-  address: MyString
+  user_id: 1
+  dob: 2017-03-16
   number: 1
-  gender: 
+  address: MyString
+  gender: MyString
 
 two:
-  user_id: 1
   name: MyString
-  dob: 1
-  address: MyString
+  user_id: 1
+  dob: 2017-03-16
   number: 1
-  gender: 
+  address: MyString
+  gender: MyString

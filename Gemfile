@@ -21,7 +21,8 @@ gem "letter_opener", :group => :development
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'strftime', '~> 1.0'
-
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 
 
 

@@ -1,0 +1,5 @@
+class ChangeIntegerLimitInDetails < ActiveRecord::Migration[5.0]
+  def change
+change_column :details, :number, :integer, limit: 8
+  end
+end

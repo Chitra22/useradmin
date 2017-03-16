@@ -77,6 +77,8 @@
           <%= link_to 'Login', root_path, data: { toggle: 'modal', target:'#myModal'} %>
           <% end %>
       </li>
+      <li><%= link_to "Profile", detail_url(current_user[:id])
+  %></li>
     </ul>
   </li>
     </div>

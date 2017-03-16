@@ -254,7 +254,7 @@ Devise.setup do |config|
  :enable_starttls_auto => true
 }
 
-ActionMailer::Base.default_url_options[:host] = "https://calm-ravine-17413.herokuapp.com"
+ActionMailer::Base.default_url_options[:host] = "https://scrora.herokuapp.com"
 
 
   # ==> OmniAuth

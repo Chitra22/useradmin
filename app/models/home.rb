@@ -1,5 +1,4 @@
 class Home < ApplicationRecord
-
 def self.tabs
 
 # Use the class methods to get down to business quickly
