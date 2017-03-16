@@ -80,8 +80,6 @@ elsif params[:start] && params[:enddate].present?
     # @posts = Post.all
     respond_to do |format|
       if @post.save
-            binding.pry
-
         UserMailer.welcome_email(@user,@post).deliver_now
         #  pdf = WickedPdf.new.pdf_from_html_file('/user_mailer/welcome_email')
         # save_path = Rails.root.join('pdfs','file.pdf')

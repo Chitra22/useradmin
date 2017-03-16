@@ -1,0 +1,81 @@
+<%= form_for Detail.new  do |f| %>
+<div id="fullscreen_bg" class="fullscreen_bg"/>
+ <form class="form-signin">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+        <div class="panel panel-primary">
+        
+            <h3 class="text-center">
+               Update my information</h3>
+        
+        <div class="panel-body">   
+        
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span>
+                            </span>
+                            <%= f.text_field :name , class: "form-control" , placeholder: "name"%>
+
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            <%= f.text_field :dob , class: "form-control" ,id: "datetimepicker10", placeholder: "DOB"%>
+                        
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                           <%= f.text_field :number , class: "form-control" , placeholder: "contact number"%>
+
+                        </div>
+                    </div>
+                    
+                             <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+                           <%= f.text_field :address , class: "form-control" , placeholder: "Address"%>
+
+                        </div>
+                    </div>
+                                       
+                    <div class="form-group">
+                        <div class="input-group">
+                             <%= f.radio_button(:gender, "men") %>
+                            <%= f.label(:gender, "Men") %> &nbsp;
+                            <%= f.radio_button(:gender, "women") %>
+                            <%= f.label(:gender, "Women") %>
+                        </div>
+                    </div>
+                      <%= f.hidden_field :user_id, class: "form-control" , value:@user[:id] %>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">
+			Save
+		</button>
+                      
+      
+      </div>
+       </div>
+        </div>
+    </div>
+</div>
+</form>
+</div> 
+<% end %>
+<script>
+$(document).ready(function() {
+  var date = new Date();
+  var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  var end = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  $('#datetimepicker10').datepicker({
+    format: "yyyy-mm-dd",
+    todayHighlight: true,
+     autoclose: true
+  });
+  });
+</script>

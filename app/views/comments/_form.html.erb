@@ -13,3 +13,16 @@
 <%= f.submit %>
 
 <% end %>
+<script type="text/javascript">
+	function SubmitWithCallback(form, frame, successFunction) {
+		alert("hi");
+   var callback = function () {
+       if(successFunction)
+           successFunction();
+       frame.unbind('load', callback);
+   };
+
+   frame.bind('load', callback);
+   form.submit();
+}
+</script>
