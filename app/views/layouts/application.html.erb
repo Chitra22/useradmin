@@ -68,7 +68,7 @@
 <li>
       <%= link_to "Index", posts_path %>
  </li>
- <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user[:email] %> <b class="caret"></b></a> 
+ <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">USER <b class="caret"></b></a> 
     <ul class="dropdown-menu">
       <li>
           <% if current_user %>
@@ -77,8 +77,6 @@
           <%= link_to 'Login', root_path, data: { toggle: 'modal', target:'#myModal'} %>
           <% end %>
       </li>
-      <li><%= link_to "Profile", detail_url(current_user[:id])
-  %></li>
     </ul>
   </li>
     </div>
