@@ -1,4 +1,5 @@
 <div class="jumbotron">
+<marquee><h2>It is a beta version</h2> </marquee>
 <div id="particles-js">
 <section class="intro"> 
 </section>
@@ -45,10 +46,11 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+</div>
+      <div class="modal-footer">
+
    <%= render "devise/shared/links" %>
       </div>
-      <div class="modal-footer">
-           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -133,5 +135,28 @@ particlesJS('particles-js', {
   }
   .wrapper {
     text-align: center;
+}
+textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
+    border-color: rgba(11, 80, 67, 1);
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(11, 80, 67, 1);
+    outline: 0 none;
+    border-style: solid;
+    border-bottom-color: #ff0000;
+        outline-color: #00ff00;
+
+}
+ .modal-body
+   {
+  background-color: #138a72 !important; 
+
+}
+#user_email
+{
+  width: 100% ;
+  height: 100% ;
+}
+.modal-header , .modal-footer
+{
+  background-color: #cbf8ef ;
 }
 </style>
