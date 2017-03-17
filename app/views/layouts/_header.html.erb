@@ -1,0 +1,118 @@
+<% if current_user.present? %>
+  <nav class="navbar navbar-defaults">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+         </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+          <%= link_to "SK" , root_path , :class => 'navbar-brand' %> 
+
+    <ul class="nav navbar-nav"> 
+      <li>
+              <%= link_to "Home" , root_path  %> 
+        </li>
+        <li><a href="/home/tabs">Portofolio</a></li>
+                <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Imdb Movies <b class="caret"></b></a> 
+    <ul class="dropdown-menu">
+<!--             <li class="kopie"><a href="#"></a></li>
+ -->        <li><a href="/movies/topfav">TOP 250</a></li>
+            <li class="active"><a href="/movies/boxoffice">BOX OFFICE</a></li>
+            <li><a href="/movies/comingsoon">COMING SOON</a></li>           
+      </li>
+   </ul>
+<li>
+      <%= link_to "New", new_post_path %>
+</li>
+<li>
+      <%= link_to "Index", posts_path %>
+ </li>
+ <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user[:email] %> <b class="caret"></b></a> 
+    <ul class="dropdown-menu">
+      <li>
+          <% if current_user %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          <% else %>
+          <%= link_to 'Login', root_path, data: { toggle: 'modal', target:'#myModal'} %>
+          <% end %>
+      </li>
+      <li><%= link_to "Profile", detail_url(current_user[:id])
+  %></li>
+    </ul>
+  </li>
+    </div>
+
+    <!-- /.navbar-collapse -->
+  </nav>
+</div>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<% else %>
+<%  end %>
+    
+
+<style type="text/css">
+  *{border-radius:0px!important; -moz-border-radius:0px!important; -webkit-border-radius:0px!important; border:none!important }
+/*Override BS*/
+.navbar-nav > li {
+    padding-top: 0px!important;
+    padding-bottom: 0px!important;
+}
+.navbar-defaults .navbar-nav > li > a {padding-left:40px; padding-right: 40px}
+.navbar-defaults .navbar-nav > li > a, .navbar-defaults .navbar-nav > .active > a, .navbar-defaults .navbar-nav > .active > a:hover, .navbar-defaults .navbar-nav > .active > a:focus{padding-top:30px!important;padding-bottom:40px}
+body{background:#16A085}
+
+/*Main CSS*/
+#particles{height:500px}
+
+.navbar-defaults {
+background-color: #026c71 !important;
+border-color: none;
+}
+
+.navbar-nav > li{padding-top:30px; padding-bottom:30px}
+
+.navbar-nav {
+display: table;
+float: none;
+margin: 0 auto;
+table-layout: fixed;
+}
+
+.navbar-nav > li:after {
+content: " •";
+color: #fff;
+float: right;
+display: block;
+z-index: 999;
+position: relative;
+font-size: 20px;
+margin-top: -63px;
+margin-right: -4px;
+}
+
+.navbar-nav > li:last-child:after{content:"";}
+
+@media (max-width: 767px) {
+ .navbar-nav > li:after{content: ""!important}
+}
+a
+{
+  color: #ffffff;
+}
+
+.navbar-brand
+{
+  height: 100%;
+   margin-left: 0cm !important;
+}
+</style>
